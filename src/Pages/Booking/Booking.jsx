@@ -21,7 +21,7 @@ export default function Booking() {
 
     return (
         <div className='booking containerCss'>
-            <h1 className='booking__title text-center capitalize text-4xl font-normal mb-5'>Vui lòng chọn ghế</h1>
+            <h1 className='booking__title text-center capitalize text-4xl font-normal mb-5'>Please choose your seat</h1>
             <hr />
             <div className='booking__content mt-8'>
                 <div className='booking__seatsSelection'>

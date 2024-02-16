@@ -11,7 +11,6 @@ export default function MovieProgram() {
 
     useEffect(() => {
         https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`).then((res) => {
-            // console.log("ket qua lich chieu phim", res.data.content);
             setDsLichChieu(res.data.content.heThongRapChieu); 
         }).catch((err) => {
             console.log("err", err);
@@ -19,7 +18,6 @@ export default function MovieProgram() {
     }, []);
 
     const items = dsLichChieu.map((cumRap, index) => {
-        // console.log("cum Rap", cumRap);
         return {
             key: index,
             label: <img src={cumRap.logo} className='w-14' />,
@@ -55,11 +53,10 @@ export default function MovieProgram() {
             {dsLichChieu.length === 0 ? (
                 <div className='movieProgram__content movieProgram__empty'>
                     <h1>
-                        Hệ thống rạp chiếu của bộ phim này chưa được cập nhật hoặc đã quá
-                        hạn chiếu ! Vui lòng quay lại sau sau !
+                        The theater systems for this movie has not been updated or is outdated show limit! Please come back later!
                     </h1>
                     <br />
-                    <h1>Xin lỗi vì sự bất tiện này !</h1>
+                    <h1>Sorry for the inconvenience!</h1>
                 </div>
             ) : (
                 <div className='movieProgram__content'>

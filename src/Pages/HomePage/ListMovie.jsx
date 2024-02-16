@@ -35,7 +35,7 @@ export default function ListMovie() {
                 <Tooltip title={item.tenPhim}>
                 <Meta title={item.tenPhim} />
                 </Tooltip>
-                <NavLink to={`/detail/${item.maPhim}`} className="bg-blue-500 block font-bold text-center text-white rounded py-2 mt-5">Xem chi tiết</NavLink>
+                <NavLink to={`/detail/${item.maPhim}`} className="bg-blue-500 block font-bold text-center text-white rounded py-2 mt-5">View detail</NavLink>
               </Card>
             )
         })}

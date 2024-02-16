@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import {UserOutlined} from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 export default function HeaderFlix() {
   let { user } = useSelector(state => state.userSlice);
   console.log('user: ', user);
@@ -11,44 +11,37 @@ export default function HeaderFlix() {
   const handleOpenMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   }
-  
-  //Đăng xuất
+
+  // Log out
   let handleLogout = () => {
     localStorage.removeItem("USER_LOGIN");
     window.location.reload();
   }
 
-  // const movieRef = useRef(null);
-  // const handleClickScroll = () => {
-  //   // Di chuyển đến phần tử phim
-  //   movieRef.current.scrollIntoView({ behavior: 'smooth' });
-  // };
 
   let renderMenu = () => {
     //CSS button
     let cssBtn = "px-5 py-2 rounded-lg border-2 border-white text-white bg-blue-500";
     let cssUserName = "px-5 py-2 rounded-lg border-2 border-sky-500 lg:bg-white lg:border-white lg:mb-3 lg:text-sm lg:text-center"
 
-    // Nếu đã đăng nhập
+    // if already login 
     if (user) {
       return (
         <>
           <span className={cssUserName}><UserOutlined /> {user.hoTen}</span>
-          <button className={cssBtn} onClick={handleLogout}>Đăng xuất</button>
+          <button className={cssBtn} onClick={handleLogout}>Sign Out</button>
         </>
       )
     }
-    //Nếu chưa đăng nhập
+    // not login yet
     else {
       return (
         <>
-          {/* <NavLink to={"/register"} className={cssBtn}>Đăng kí</NavLink>
-          <button className={cssBtn} onClick={() => { window.location.href = "/login" }}>Đăng nhập</button> */}
           <NavLink className={`${cssBtn} account__item`} to={"/register"}>
-            <button>Đăng kí</button>
+            <button>Sign Up</button>
           </NavLink>
           <NavLink className={`${cssBtn} account__item`} to={"/login"}>
-            <button>Đăng nhập</button>
+            <button>Sign In</button>
           </NavLink>
         </>
       )
@@ -60,10 +53,10 @@ export default function HeaderFlix() {
       <div className='headerFlix__content h-20 flex justify-between items-center px-4 shadow-xl fixed z-10 bg-white w-full'>
         <NavLink to={"/"} className='text-3xl font-bold text-blue-500'>CyberFlix</NavLink>
         <div className='headerFlix__menu lg:hidden'>
-          <a href='#lichChieu' className='menu__item mx-4'>Lịch chiếu</a>
-          <a href='#cumRap' className='menu__item mx-4'>Cụm rạp</a>
-          <a href='#' className='menu__item mx-4'>Tin tức</a>
-          <a href='#' className='menu__item mx-4'>Ứng dụng</a>
+          <a href='#lichChieu' className='menu__item mx-4'>Showtime</a>
+          <a href='#cumRap' className='menu__item mx-4'>Theaters</a>
+          <a href='#' className='menu__item mx-4'>News</a>
+          <a href='#' className='menu__item mx-4'>Applications</a>
         </div>
         <div className='space-x-3 lg:hidden'>{renderMenu()}</div>
 
@@ -82,16 +75,16 @@ export default function HeaderFlix() {
             </div>
             <hr />
             <div className='headerFlix__menu flex flex-col ml-6 my-4'>
-              <a href='#lichChieu' className='menu__item my-4'>Lịch chiếu</a>
-              <a href='#cumRap' className='menu__item my-4'>Cụm rạp</a>
-              <a href='#' className='menu__item my-4'>Tin tức</a>
-              <a href='#' className='menu__item my-4'>Ứng dụng</a>
+              <a href='#lichChieu' className='menu__item my-4'>Showtime</a>
+              <a href='#cumRap' className='menu__item my-4'>Theaters</a>
+              <a href='#' className='menu__item my-4'>News</a>
+              <a href='#' className='menu__item my-4'>Applications</a>
             </div>
           </div>
         </div>
 
 
       </div>
-    </div>    
+    </div>
   )
 }

@@ -63,15 +63,16 @@ export default function FooterFlix() {
                         <img src='./img/zion.jpeg' alt='logo' />
                     </div>
                     <div className='footerBottom__item col-span-8 md:col-span-6 md:justify-self-center md:text-center sm:col-span-12 sm:my-5'>
-                        <h2 className='item__title'>TIX - SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h2>
+                        <h2 className='item__title'>TIX - PRODUCT OF ZION JOINT STOCK COMPANY</h2>
                         <p className='item__text pt-3'>
-                            Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, quận 7, Tp. Hồ Chí Minh, Việt Nam.
+                            Address: Z06 Street 13, Tan Thuan Dong Ward, District 7, City. Ho Chi Minh, Vietnam.
                             <br />
                             Giấy chứng nhận đăng ký kinh doanh số: 0101659783,
+                            Business registration certificate number: 0101659783,                          
                             <br />
-                            đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch và đầu tư Thành phố Hồ Chí Minh cấp.
+                            30th change registration, dated January 22, 2020 issued by Ho Chi Minh City Department of Planning and Investment.
                             <br />
-                            Số Điện Thoại (Hotline): 1900 545 436
+                            Phone Number (Hotline): 1900 545 436
                         </p>
                     </div>
                     <div className='footerBottom__item col-span-2 md:col-span-3 md:justify-self-center sm:col-span-12' style={{ width: "100px" }}>

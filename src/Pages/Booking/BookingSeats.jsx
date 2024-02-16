@@ -16,13 +16,11 @@ export default function BookingSeats({ dsGhe }) {
             let cssGheDaDat = '';
             let disabled = false;
             
-            // trạng thái ghế đã được đặt
             if (ghe.daDat) {
                 cssGheDaDat = 'selected';
                 disabled = true;
             }
 
-            // xét trạng thái ghế đang đặt
             let cssGheDangDat = "";
             let indexGheDangDat = dsGheDangDat.findIndex(gheDangDat => {
                 return gheDangDat.tenGhe === ghe.tenGhe;
@@ -58,7 +56,7 @@ export default function BookingSeats({ dsGhe }) {
     return (
         <div className='seatsSelection__content'>
             <div className='content__screen w-3/4 xl:w-11/12 lg:w-full flex justify-center'>
-                <span className='py-3 text-white text-xl'>Màn hình</span>
+                <span className='py-3 text-white text-xl'>Screen</span>
             </div>
             <div className='content__dsGhe w-3/4 xl:w-11/12 lg:w-full'>
                 {renderGhe()}
@@ -66,15 +64,15 @@ export default function BookingSeats({ dsGhe }) {
             <div className='content__note w-3/4 xl:w-11/12 lg:w-full grid grid-cols-3'>
                 <div className='note__item'>
                     <div className='w-10 h-10 md:w-7 md:h-7 sm:w-5 sm:h-5 rounded-lg empty'></div>
-                    <p className='ml-3'>Ghế trống</p>
+                    <p className='ml-3'>Empty</p>
                 </div>
                 <div className='note__item'>
                     <div className='w-10 h-10 md:w-7 md:h-7 sm:w-5 sm:h-5 rounded-lg selecting'></div>
-                    <p className='ml-3'>Đang chọn</p>
+                    <p className='ml-3'>Choosing</p>
                 </div>
                 <div className='note__item'>
                     <div className='w-10 h-10 md:w-7 md:h-7 sm:w-5 sm:h-5 rounded-lg selected'></div>
-                    <p className='ml-3'>Đã đặt</p>
+                    <p className='ml-3'>Unavailable</p>
                 </div>
             </div>
         </div>

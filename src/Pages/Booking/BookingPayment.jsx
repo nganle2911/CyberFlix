@@ -14,7 +14,7 @@ export default function BookingPayment({ ttPhim }) {
     // show confirm when payment 
     let showConfirm = () => {
         confirm({
-            title: 'Đặt vé thành công !',
+            title: 'Buy ticket successfully !',
             icon: <CheckCircleTwoTone twoToneColor="#52c41a" style={{fontSize: "60px"}} />,
             onOk() {
                 console.log("OK");
@@ -36,49 +36,48 @@ export default function BookingPayment({ ttPhim }) {
     let handleBuyTicket = (arrVe) => {
         if (user) {
             if (arrVe.length > 0) {
-                // show confirm 
                 showConfirm();
             } else {
-                message.warning("Vui lòng chọn ghế !");
+                message.warning("Please choose your seat!");
             }
         } else {
             localStorage.setItem("BOOKING", '/booking')
             navigate("/login")
-            message.error("Vui lòng đăng nhập để đặt vé!")
+            message.error("Please log in to buy ticket!")
         }
     }
 
     return (
         <>
             <div className='payment__item'>
-                <h2 className='text-2xl text-blue-600 capitalize font-normal'>Thông tin chọn ghế</h2>
+                <h2 className='text-2xl text-blue-600 capitalize font-normal'>Seat's Information</h2>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Cụm Rạp: </p>
+                <p className='item__title'>Theaters: </p>
                 <p className='item__value'>{ttPhim.tenCumRap}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Địa chỉ: </p>
+                <p className='item__title'>Address: </p>
                 <p className='item__value'>{ttPhim.diaChi}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Rạp: </p>
+                <p className='item__title'>Theater's name: </p>
                 <p className='item__value'>{ttPhim.tenRap}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Ngày giờ chiếu: </p>
+                <p className='item__title'>Time: </p>
                 <p className='item__value'>{ttPhim.ngayChieu} - {ttPhim.gioChieu}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Tên phim: </p>
+                <p className='item__title'>Movie's name: </p>
                 <p className='item__value'>{ttPhim.tenPhim}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Chọn: </p>
+                <p className='item__title'>Seats: </p>
                 <p className='item__value'>{renderThongTinVe(dsGheDangDat).arrVe}</p>
             </div>
             <div className='payment__item'>
-                <p className='item__title'>Tổng tiền: </p>
+                <p className='item__title'>Total amount: </p>
                 <p className='item__value text-xl'>{(renderThongTinVe(dsGheDangDat).total).toLocaleString()} VND</p>
             </div>
             <div className='payment__item'>
@@ -86,7 +85,7 @@ export default function BookingPayment({ ttPhim }) {
                 onClick={() => {
                     handleBuyTicket(renderThongTinVe(dsGheDangDat).arrVe);
                 }}
-                >đặt vé</button>
+                >Buy ticket</button>
             </div>           
         </>
     )

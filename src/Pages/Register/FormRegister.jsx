@@ -9,38 +9,35 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { https } from '../../services/api';
 import { setLoadingOff } from '../../redux/spinnerSlice/spinnerSlice';
 
-
 const FormRegister = () => {
   //Responsive form
   const formItemLayout = {
     wrapperCol: {
-      //Laybel
       xs: {
         offset: 0,
         span: 24,
       },
-      //ô input
       sm: {
         offset: 0, 
         span: 24,
       },
     },
   };
-  const [form] = Form.useForm();//important
+  const [form] = Form.useForm();
   const navigate = useNavigate()
   
-  //Đăng kí thành công
+
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
     https.post("/api/QuanLyNguoiDung/DangKy", values)
     .then((res) => {
      console.log(res);
-     message.success("Đăng kí tài khoản thành công")
+     message.success("Sign up successfully!")
      navigate("/login")
     })
     .catch((err) => {
      console.log(err.response.data.content);
-     message.error("Đăng kí tài khoản thất bại")
+     message.error("Sign up failed!")
      message.error(err.response.data.content)
      });
   };
@@ -55,11 +52,11 @@ const FormRegister = () => {
       className='containerCss'>
       <div className='bg-blue-500 flex justify-around font-bold text-white text-2xl rounded-t-xl py-1'>
         <div className='text-gray-400'>
-          <NavLink to={"/login"}>Đăng nhập
+          <NavLink to={"/login"}>Sign in
           </NavLink>
         </div>
         <div>
-          <h1 to={"/register"}>Đăng kí</h1>
+          <h1 to={"/register"}>Sign up</h1>
           <hr className='bold-hr-2'/>
         </div>
       </div>
@@ -77,14 +74,14 @@ const FormRegister = () => {
       }}
     >
 
-     {/* Tài khoản */}
+     {/* account */}
      <Form.Item
         name="taiKhoan"
-        label="Tài Khoản"
+        label="Account"
         rules={[
           {
             required: true,
-            message: 'Vui lòng nhập tài khoản!',
+            message: 'Please enter account',
             whitespace: true,
           },
         ]}
@@ -92,14 +89,14 @@ const FormRegister = () => {
         <Input />
       </Form.Item>
 
-      {/* Mật khẩu */}
+      {/* password */}
       <Form.Item
         name="matKhau"
-        label="Mật Khẩu"
+        label="Password"
         rules={[
           {
             required: true,
-            message: 'Vui lòng nhập mật khẩu!',
+            message: 'Please enter password!',
           },
         ]}
         hasFeedback
@@ -107,23 +104,23 @@ const FormRegister = () => {
         <Input.Password />
       </Form.Item>
 
-      {/* Nhập lại mật khẩu */}
+      {/* confirm password */}
       <Form.Item
         name="confirm"
-        label="Nhập lại mật khẩu"
+        label="Confirm password"
         dependencies={['matKhau']}
         hasFeedback
         rules={[
           {
             required: true,
-            message: 'Vui lòng nhập lại mật khẩu!',
+            message: 'Please enter password!',
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('matKhau') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error('Mật khẩu nhập lại không khớp!'));
+              return Promise.reject(new Error('Password does not match!'));
             },
           }),
         ]}
@@ -131,14 +128,14 @@ const FormRegister = () => {
         <Input.Password />
       </Form.Item>
 
-        {/* Họ và tên */}
+        {/* name*/}
      <Form.Item
         name="hoTen"
-        label="Họ và tên"
+        label="Full name"
         rules={[
           {
             required: true,
-            message: 'Vui lòng nhập họ và tên!',
+            message: 'Please enter full name!',
             whitespace: true,
           },
         ]}
@@ -149,15 +146,15 @@ const FormRegister = () => {
      {/* Email */}
      <Form.Item
         name="email"
-        label="E-mail"
+        label="Email"
         rules={[
           {
             type: 'email',
-            message: 'Email sai định dạng!',
+            message: 'Email is incorrect!',
           },
           {
             required: true,
-            message: 'Vui lòng nhập Email!',
+            message: 'Please enter email!',
           },
           
         ]}
@@ -165,14 +162,14 @@ const FormRegister = () => {
         <Input />
       </Form.Item>
         
-        {/* Số điện thoại */}
+        {/* phone */}
       <Form.Item
         name="soDt"
-        label="Số điện thoại"
+        label="Phone number"
         rules={[
           {
             required: true,
-            message: 'Vui lòng nhập số điện thoại!',
+            message: 'Please enter phone number!',
           },
         ]}
       >
@@ -192,16 +189,13 @@ const FormRegister = () => {
         
       }}>
       <Button className='bg-blue-500' type="primary" htmlType="submit">
-          Đăng kí
+          Sign up
         </Button>
 
       </Form.Item>
  
     </Form>
     </div>
-    
-    
-    
   );
 };
 export default FormRegister;
